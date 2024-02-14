@@ -4,6 +4,9 @@ const morgan = require('morgan')
 const app = express() 
 app.use(express.json())
 
+app.use(cors())
+app.use(express.static('dist'))
+
 // To use tiny configuration: app.use(morgan('tiny'))
 
 // To use custom configuration, first create token, then specify format
