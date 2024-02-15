@@ -67,6 +67,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
+    console.log('Person object2:', Person)
     Person.find({}).then(persons => {
         console.log('persons:', persons)
         response.json(persons)  
@@ -141,6 +142,6 @@ const unkwownEndpoint = (request, response) => {
 
 app.use(unkwownEndpoint)
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
 app.listen(PORT)
 console.log(`Server is listening on port ${PORT}`)
