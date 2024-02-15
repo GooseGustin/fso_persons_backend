@@ -1,10 +1,10 @@
 const express = require('express') 
 const morgan = require('morgan') 
 const cors = require('cors') 
-
+const Person = require('./models/persons')
 const app = express() 
-app.use(express.json())
 
+app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 
@@ -12,7 +12,6 @@ app.use(express.static('dist'))
 
 // To use custom configuration, first create token, then specify format
 morgan.token('body', function (req, res) {
-    // console.log(req.body)
     body = JSON.stringify(req.body)
     return body
 })
@@ -68,7 +67,11 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/persons', (request, response) => {
-    response.json(persons)
+    Person.find({}).then(persons => {
+        console.log('persons:', persons)
+        response.json(persons)  
+        // mongoose.connection.close()
+    })
 })
 
 app.get('/api/persons/:id', (request, response) => {
