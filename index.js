@@ -1,3 +1,4 @@
+// require('dotenv').config()
 const express = require('express') 
 const morgan = require('morgan') 
 const cors = require('cors') 
@@ -25,7 +26,6 @@ const requestLogger = (request, response, next) => {
     console.log('----')
     next() // yields control over to the next middleware
 }
-
 // app.use(requestLogger)
 
 let persons = [
@@ -62,7 +62,6 @@ let persons = [
   ]
 
 app.get('/', (request, response) => {
-    // response.send("<h1>Hello world</h1>")
     response.send('./dist/index.html')
 })
 

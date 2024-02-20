@@ -1,5 +1,6 @@
 require('dotenv').config()
 mongoose = require('mongoose') 
+mongoose.set('strictQuery', false) 
 
 /*
 - Connect to the uri, 
@@ -12,7 +13,6 @@ mongoose = require('mongoose')
 // DO NOT SAVE YOUR PASSWORD TO GITHUB
 const url = process.env.MONGODB_URL
 
-mongoose.set('strictQuery', false) 
 mongoose
     .connect(url)
     .then(result => {
@@ -35,7 +35,7 @@ personSchema.set('toJSON', {
     }
 })
 
-Person = mongoose.model('Person', personSchema) 
+const Person = mongoose.model('Person', personSchema) 
 console.log('Person object:', Person) 
 
 module.exports = Person
