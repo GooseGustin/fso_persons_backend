@@ -1,5 +1,5 @@
 require('dotenv').config()
-mongoose = require('mongoose') 
+const mongoose = require('mongoose') 
 mongoose.set('strictQuery', false) 
 
 /*
@@ -22,7 +22,7 @@ mongoose
         console.log('Error connecting to MongoDB:', error.message)
     })
 
-personSchema = new mongoose.Schema({
+const personSchema = new mongoose.Schema({
     name: String, 
     number: String
 })
